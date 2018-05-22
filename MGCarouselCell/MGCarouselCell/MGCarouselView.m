@@ -8,13 +8,13 @@
 
 #import "MGCarouselView.h"
 #import "MGCarouselCell.h"
+#import "MGFlowLayout.h"
 
 static NSString *cellId = @"cellID";
 @interface MGCarouselView()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) MGFlowLayout *flowLayout;
 
-@property (nonatomic, assign) NSInteger scrollCounts;
 @property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, assign)  NSInteger currentIndex;
 
@@ -27,74 +27,38 @@ static NSString *cellId = @"cellID";
     self = [super initWithFrame:frame];
     if (self) {
         [self initCollectionView];
-        
-        [self setupTimer];
     }
     return self;
 }
 
 - (void)initCollectionView{
-    _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    _flowLayout = [[MGFlowLayout alloc] init];
     _flowLayout.minimumLineSpacing = 0;
-    _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-100, CGRectGetHeight(self.frame));
+
     
     _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_flowLayout];
     _collectionView.backgroundColor = [UIColor whiteColor];
-    _collectionView.pagingEnabled = YES;
+    //_collectionView.pagingEnabled = YES;
     _collectionView.showsHorizontalScrollIndicator = NO;
     _collectionView.showsVerticalScrollIndicator = NO;
     [_collectionView registerClass:[MGCarouselCell class] forCellWithReuseIdentifier:cellId];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.scrollsToTop = NO;
+    _collectionView.decelerationRate = 10;
     [self addSubview:_collectionView];
 
 }
 
 - (void)setItems:(NSArray *)items{
     _items = items;
-    _scrollCounts = _items.count * 100;
     [self.collectionView reloadData];
-}
-
-- (void)autoScrollView{
-    if (0 == _scrollCounts) return;
-    NSInteger currentIndex = [self currentIndex];
-    NSInteger targetIndex = currentIndex + 1;
-    [self scrollToIndex:targetIndex];
-    
-}
-
-- (void)scrollToIndex:(NSInteger)targetIndex
-{
-    if (targetIndex >= _scrollCounts) {
-        targetIndex = _scrollCounts * 0.5;
-        [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    }
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-}
-
-- (NSInteger)currentIndex
-{
-    if (CGRectGetWidth(_collectionView.frame) == 0 || CGRectGetHeight(_collectionView.frame) == 0) {
-        return 0;
-    }
-    
-    NSInteger index = (_collectionView.contentOffset.x + _flowLayout.itemSize.width * 0.5) / _flowLayout.itemSize.width;
-    
-    return MAX(0, index);
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-60, CGRectGetHeight(self.frame));
-    self.collectionView.frame = self.bounds;
-    
-    if (_collectionView.contentOffset.x == 0 &&  _scrollCounts) {
-        NSInteger targetIndex = _scrollCounts * 0.5;
-        [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    }
 }
 
 #pragma mark 代理方法
@@ -110,68 +74,47 @@ static NSString *cellId = @"cellID";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _scrollCounts;
+    return _items.count;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self invalidateTimer];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    //[self setupTimer];
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    if (fabs(scrollView.contentOffset.x -_offsetX) > 10) {
-        [self scrollToNextPage:scrollView];
-    }
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    if (fabs(scrollView.contentOffset.x -_offsetX) > 10) {
-        [self scrollToNextPage:scrollView];
-    }
-}
-
--(void)scrollToNextPage:(UIScrollView *)scrollView{
-    if (!self.items.count) return;
-    if (scrollView.contentOffset.x > _offsetX) {
-        NSInteger currentIndex = [self currentIndex];
-        [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    }else{
-        NSInteger currentIndex = [self currentIndex];
-        [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentIndex-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self scrollViewDidEndScrollingAnimation:self.collectionView];
-}
-
+//系统动画停止是刷新当前偏移量_offer是我定义的全局变量
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     _offsetX = scrollView.contentOffset.x;
 }
 
-- (void)makeScrollViewScrollToIndex:(NSInteger)index{
-    [self invalidateTimer];
-    if (0 == _scrollCounts) return;
-    
-    [self scrollToIndex:(int)(_scrollCounts * 0.5 + index)];
-    [self setupTimer];
+//滑动减速是触发的代理，当用户用力滑动或者清扫时触发
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    if (fabs(scrollView.contentOffset.x - _offsetX) > 10) {
+        [self scrollToNextPage:scrollView];
+    }
 }
 
+//用户拖拽是调用
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return CGSizeMake(CGRectGetWidth(self.frame)-60, CGRectGetHeight(self.frame));
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    if (fabs(scrollView.contentOffset.x - _offsetX) > 20) {
+        [self scrollToNextPage:scrollView];
+    }
+}
+
+-(void)scrollToNextPage:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.x > _offsetX) {
+        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+        if (i >= _items.count) {
+            return;
+        }
+        NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
+        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }else{
+        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+        if (i < 1) {
+            return;
+        }
+        NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
+        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -180,20 +123,6 @@ static NSString *cellId = @"cellID";
     if (self.clickCellBlock) {
         self.clickCellBlock(index);
     }
-}
-
-#pragma mark -定时器-
-- (void)setupTimer
-{
-    [self invalidateTimer];
-    _timer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(autoScrollView) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-}
-
-- (void)invalidateTimer
-{
-    [_timer invalidate];
-    _timer = nil;
 }
 
 @end

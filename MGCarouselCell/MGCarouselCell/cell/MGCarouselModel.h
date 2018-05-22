@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString *bUrl;
 @property (nonatomic, copy) NSString *aCountryName;
 @property (nonatomic, copy) NSString *bCountryName;
-@property (nonatomic, copy) NSString *aPlayNum;
-@property (nonatomic, copy) NSString *bPlayNum;
+@property (nonatomic, assign) CGFloat aPlayNum;
+@property (nonatomic, assign) CGFloat bPlayNum;
 @end
 

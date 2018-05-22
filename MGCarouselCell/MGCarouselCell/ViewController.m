@@ -24,7 +24,7 @@
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
-    MGCarouselView *carouselView = [[MGCarouselView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 230)];
+    MGCarouselView *carouselView = [[MGCarouselView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 220)];
     carouselView.clickCellBlock = ^(NSInteger index) {
         NSLog(@"点击了:%ld",index);
     };

@@ -27,38 +27,36 @@
     if (self) {
         
         _aCountryImageView = [[UIImageView alloc]init];
-        _aCountryImageView.backgroundColor = [UIColor redColor];
         [self addSubview:_aCountryImageView];
         _bCountryImageView = [[UIImageView alloc]init];
-        _bCountryImageView.backgroundColor = [UIColor redColor];
         [self addSubview:_bCountryImageView];
         
         _aCountryLB = [[UILabel alloc]init];
-        _aCountryLB.textColor = [UIColor blackColor];
+        _aCountryLB.textColor = COLOR_WITH_HEX(0x333333);
         _aCountryLB.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_aCountryLB];
         _bCountryLB = [[UILabel alloc]init];
-        _bCountryLB.textColor = [UIColor blackColor];
+        _bCountryLB.textColor = COLOR_WITH_HEX(0x333333);
         _bCountryLB.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_bCountryLB];
         
         _aPlayTitleLB = [[UILabel alloc]init];
-        _aPlayTitleLB.textColor = [UIColor blackColor];
+        _aPlayTitleLB.textColor = COLOR_WITH_HEX(0x333333);
         _aPlayTitleLB.textAlignment = NSTextAlignmentCenter;
-        _aPlayTitleLB.font = [UIFont systemFontOfSize:13];
+        _aPlayTitleLB.font = [UIFont boldSystemFontOfSize:13];
         [self addSubview:_aPlayTitleLB];
         _bPlayTitleLB = [[UILabel alloc]init];
-        _bPlayTitleLB.textColor = [UIColor blackColor];
+        _bPlayTitleLB.textColor = COLOR_WITH_HEX(0x333333);
         _bPlayTitleLB.textAlignment = NSTextAlignmentCenter;
-        _bPlayTitleLB.font = [UIFont systemFontOfSize:13];
+        _bPlayTitleLB.font = [UIFont boldSystemFontOfSize:13];
         [self addSubview:_bPlayTitleLB];
         
         _aPlayNumLB = [[UILabel alloc]init];
-        _aPlayNumLB.textColor = [UIColor blackColor];
+        _aPlayNumLB.textColor = COLOR_WITH_HEX(0x333333);;
         _aPlayNumLB.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_aPlayNumLB];
         _bPlayNumLB = [[UILabel alloc]init];
-        _bPlayNumLB.textColor = [UIColor blackColor];
+        _bPlayNumLB.textColor = COLOR_WITH_HEX(0x333333);;
         _bPlayNumLB.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_bPlayNumLB];
         
@@ -76,11 +74,33 @@
 - (void)setItemModel:(MGCarouselModel *)itemModel{
     _itemModel = itemModel;
     if (_itemModel) {
+        
+        _aCountryImageView.image = [UIImage imageNamed:[_itemModel.aCountryName stringByAppendingString:@".png"]];
+        _bCountryImageView.image = [UIImage imageNamed:[_itemModel.bCountryName stringByAppendingString:@".png"]];
+        
+//        [_aCountryImageView sd_setImageWithURL:[NSURL URLWithString:_itemModel.aUrl]];
+//        [_bCountryImageView sd_setImageWithURL:[NSURL URLWithString:_itemModel.bUrl]];
+        
         _aCountryLB.text = _itemModel.aCountryName;
         _bCountryLB.text = _itemModel.bCountryName;
-        _aPlayNumLB.text = [NSString stringWithFormat:@"%@万",_itemModel.aPlayNum];
-        _bPlayNumLB.text = [NSString stringWithFormat:@"%@万",_itemModel.bPlayNum];
+        
+        _aPlayNumLB.attributedText = [self stringToAttributedString:[self changeNumberFormat2:_itemModel.aPlayNum]];
+        _bPlayNumLB.attributedText = [self stringToAttributedString:[self changeNumberFormat2:_itemModel.bPlayNum]];
     }
+}
+
+- (NSMutableAttributedString*)stringToAttributedString:(NSString*)str{
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str attributes:@{NSForegroundColorAttributeName:COLOR_WITH_HEX(0xFB7A52), NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    [attStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"万" attributes:@{NSForegroundColorAttributeName:COLOR_WITH_HEX(0x333333), NSFontAttributeName:[UIFont systemFontOfSize:15]}]];
+    return attStr;
+}
+
+-(NSString *)changeNumberFormat2:(CGFloat)num
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setPositiveFormat:@"###,##0.0;"];
+    NSString *formattedNumberString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:num]];
+    return formattedNumberString;
 }
 
 - (void)layoutUI{
@@ -92,15 +112,17 @@
     }];
     
     [_aCountryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(30);
-        make.right.equalTo(self.gameLogo.mas_left).offset(-30);
-        make.width.and.height.mas_equalTo(70);
+        make.top.equalTo(self.mas_top).offset(40);
+        make.right.equalTo(self.gameLogo.mas_left).offset(-25);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(80*303/486);
     }];
     
     [_bCountryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.gameLogo.mas_right).offset(30);
+        make.left.equalTo(self.gameLogo.mas_right).offset(25);
         make.centerY.mas_equalTo(self.aCountryImageView.mas_centerY);
-        make.width.and.height.mas_equalTo(self.aCountryImageView);
+        make.width.mas_equalTo(self.aCountryImageView.mas_width);
+        make.height.mas_equalTo(self.aCountryImageView.mas_height);
     }];
     
     [_aCountryLB mas_makeConstraints:^(MASConstraintMaker *make) {

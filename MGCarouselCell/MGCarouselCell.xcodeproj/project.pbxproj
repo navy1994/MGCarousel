@@ -12,6 +12,40 @@
 		F8903A1220B312AF00C0865C /* MGCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8903A1120B312AF00C0865C /* MGCarouselModel.m */; };
 		F8903A1420B3AA7C00C0865C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1320B3AA7C00C0865C /* data.json */; };
 		F8903A1620B3B14000C0865C /* vs.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1520B3B14000C0865C /* vs.png */; };
+		F8903A1920B3F50A00C0865C /* MGFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F8903A1820B3F50A00C0865C /* MGFlowLayout.m */; };
+		F8903A3B20B4011700C0865C /* 秘鲁.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1B20B4011600C0865C /* 秘鲁.png */; };
+		F8903A3C20B4011700C0865C /* 澳大利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1C20B4011600C0865C /* 澳大利亚.png */; };
+		F8903A3D20B4011700C0865C /* 尼日利亚.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1D20B4011600C0865C /* 尼日利亚.png */; };
+		F8903A3E20B4011700C0865C /* 巴西.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1E20B4011600C0865C /* 巴西.png */; };
+		F8903A3F20B4011700C0865C /* 英格兰.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1F20B4011600C0865C /* 英格兰.png */; };
+		F8903A4020B4011700C0865C /* 日本.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2020B4011600C0865C /* 日本.png */; };
+		F8903A4120B4011700C0865C /* 乌拉圭.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2120B4011600C0865C /* 乌拉圭.png */; };
+		F8903A4220B4011700C0865C /* 冰岛.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2220B4011600C0865C /* 冰岛.png */; };
+		F8903A4320B4011700C0865C /* 克罗地亚.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2320B4011600C0865C /* 克罗地亚.png */; };
+		F8903A4520B4011700C0865C /* 阿根廷.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2520B4011600C0865C /* 阿根廷.png */; };
+		F8903A4620B4011700C0865C /* 埃及.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2620B4011600C0865C /* 埃及.png */; };
+		F8903A4720B4011700C0865C /* 比利时.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2720B4011600C0865C /* 比利时.png */; };
+		F8903A4820B4011700C0865C /* 波兰.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2820B4011600C0865C /* 波兰.png */; };
+		F8903A4920B4011700C0865C /* 沙特.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2920B4011600C0865C /* 沙特.png */; };
+		F8903A4B20B4011700C0865C /* 韩国.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2B20B4011600C0865C /* 韩国.png */; };
+		F8903A4C20B4011700C0865C /* 摩纳哥.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2C20B4011600C0865C /* 摩纳哥.png */; };
+		F8903A4D20B4011700C0865C /* 墨西哥.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2D20B4011600C0865C /* 墨西哥.png */; };
+		F8903A4E20B4011700C0865C /* 瑞士.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2E20B4011600C0865C /* 瑞士.png */; };
+		F8903A4F20B4011700C0865C /* 法国.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A2F20B4011600C0865C /* 法国.png */; };
+		F8903A5020B4011700C0865C /* 俄罗斯.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3020B4011600C0865C /* 俄罗斯.png */; };
+		F8903A5120B4011700C0865C /* 德国.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3120B4011600C0865C /* 德国.png */; };
+		F8903A5220B4011700C0865C /* 哥伦比亚.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3220B4011600C0865C /* 哥伦比亚.png */; };
+		F8903A5320B4011700C0865C /* 西班牙.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3320B4011600C0865C /* 西班牙.png */; };
+		F8903A5420B4011700C0865C /* 巴拿马.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3420B4011600C0865C /* 巴拿马.png */; };
+		F8903A5520B4011700C0865C /* 葡萄牙.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3520B4011600C0865C /* 葡萄牙.png */; };
+		F8903A5620B4011700C0865C /* 丹麦.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3620B4011600C0865C /* 丹麦.png */; };
+		F8903A5720B4011700C0865C /* 突尼斯.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3720B4011600C0865C /* 突尼斯.png */; };
+		F8903A5920B4011700C0865C /* 塞尔维亚.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3920B4011600C0865C /* 塞尔维亚.png */; };
+		F8903A5A20B4011700C0865C /* 瑞典.png in Resources */ = {isa = PBXBuildFile; fileRef = F8903A3A20B4011600C0865C /* 瑞典.png */; };
+		F8903A5C20B4051C00C0865C /* 伊朗.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F8903A5B20B4051C00C0865C /* 伊朗.jpeg */; };
+		F8903A5E20B4053000C0865C /* 伊朗.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F8903A5D20B4053000C0865C /* 伊朗.jpeg */; };
+		F8903A6020B4053C00C0865C /* 哥斯达黎加.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F8903A5F20B4053C00C0865C /* 哥斯达黎加.jpeg */; };
+		F8903A6220B4054900C0865C /* 塞内加尔.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F8903A6120B4054900C0865C /* 塞内加尔.jpeg */; };
 		F8C8272A20B2D960003A1C48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C8272920B2D960003A1C48 /* AppDelegate.m */; };
 		F8C8272D20B2D960003A1C48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C8272C20B2D960003A1C48 /* ViewController.m */; };
 		F8C8273020B2D960003A1C48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8C8272E20B2D960003A1C48 /* Main.storyboard */; };
@@ -51,6 +85,41 @@
 		F8903A1120B312AF00C0865C /* MGCarouselModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCarouselModel.m; sourceTree = "<group>"; };
 		F8903A1320B3AA7C00C0865C /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = MGCarouselCell/data.json; sourceTree = SOURCE_ROOT; };
 		F8903A1520B3B14000C0865C /* vs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vs.png; sourceTree = "<group>"; };
+		F8903A1720B3F50A00C0865C /* MGFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGFlowLayout.h; sourceTree = "<group>"; };
+		F8903A1820B3F50A00C0865C /* MGFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGFlowLayout.m; sourceTree = "<group>"; };
+		F8903A1B20B4011600C0865C /* 秘鲁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "秘鲁.png"; sourceTree = "<group>"; };
+		F8903A1C20B4011600C0865C /* 澳大利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "澳大利亚.png"; sourceTree = "<group>"; };
+		F8903A1D20B4011600C0865C /* 尼日利亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "尼日利亚.png"; sourceTree = "<group>"; };
+		F8903A1E20B4011600C0865C /* 巴西.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴西.png"; sourceTree = "<group>"; };
+		F8903A1F20B4011600C0865C /* 英格兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "英格兰.png"; sourceTree = "<group>"; };
+		F8903A2020B4011600C0865C /* 日本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "日本.png"; sourceTree = "<group>"; };
+		F8903A2120B4011600C0865C /* 乌拉圭.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "乌拉圭.png"; sourceTree = "<group>"; };
+		F8903A2220B4011600C0865C /* 冰岛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "冰岛.png"; sourceTree = "<group>"; };
+		F8903A2320B4011600C0865C /* 克罗地亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "克罗地亚.png"; sourceTree = "<group>"; };
+		F8903A2520B4011600C0865C /* 阿根廷.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "阿根廷.png"; sourceTree = "<group>"; };
+		F8903A2620B4011600C0865C /* 埃及.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "埃及.png"; sourceTree = "<group>"; };
+		F8903A2720B4011600C0865C /* 比利时.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "比利时.png"; sourceTree = "<group>"; };
+		F8903A2820B4011600C0865C /* 波兰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "波兰.png"; sourceTree = "<group>"; };
+		F8903A2920B4011600C0865C /* 沙特.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "沙特.png"; sourceTree = "<group>"; };
+		F8903A2B20B4011600C0865C /* 韩国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "韩国.png"; sourceTree = "<group>"; };
+		F8903A2C20B4011600C0865C /* 摩纳哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摩纳哥.png"; sourceTree = "<group>"; };
+		F8903A2D20B4011600C0865C /* 墨西哥.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "墨西哥.png"; sourceTree = "<group>"; };
+		F8903A2E20B4011600C0865C /* 瑞士.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞士.png"; sourceTree = "<group>"; };
+		F8903A2F20B4011600C0865C /* 法国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "法国.png"; sourceTree = "<group>"; };
+		F8903A3020B4011600C0865C /* 俄罗斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "俄罗斯.png"; sourceTree = "<group>"; };
+		F8903A3120B4011600C0865C /* 德国.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "德国.png"; sourceTree = "<group>"; };
+		F8903A3220B4011600C0865C /* 哥伦比亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "哥伦比亚.png"; sourceTree = "<group>"; };
+		F8903A3320B4011600C0865C /* 西班牙.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "西班牙.png"; sourceTree = "<group>"; };
+		F8903A3420B4011600C0865C /* 巴拿马.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "巴拿马.png"; sourceTree = "<group>"; };
+		F8903A3520B4011600C0865C /* 葡萄牙.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "葡萄牙.png"; sourceTree = "<group>"; };
+		F8903A3620B4011600C0865C /* 丹麦.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "丹麦.png"; sourceTree = "<group>"; };
+		F8903A3720B4011600C0865C /* 突尼斯.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "突尼斯.png"; sourceTree = "<group>"; };
+		F8903A3920B4011600C0865C /* 塞尔维亚.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "塞尔维亚.png"; sourceTree = "<group>"; };
+		F8903A3A20B4011600C0865C /* 瑞典.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "瑞典.png"; sourceTree = "<group>"; };
+		F8903A5B20B4051C00C0865C /* 伊朗.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "伊朗.jpeg"; sourceTree = "<group>"; };
+		F8903A5D20B4053000C0865C /* 伊朗.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "伊朗.jpeg"; sourceTree = "<group>"; };
+		F8903A5F20B4053C00C0865C /* 哥斯达黎加.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "哥斯达黎加.jpeg"; sourceTree = "<group>"; };
+		F8903A6120B4054900C0865C /* 塞内加尔.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "塞内加尔.jpeg"; sourceTree = "<group>"; };
 		F8C8272520B2D960003A1C48 /* MGCarouselCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGCarouselCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C8272820B2D960003A1C48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8C8272920B2D960003A1C48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +183,46 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F8903A1A20B4011600C0865C /* 国旗 */ = {
+			isa = PBXGroup;
+			children = (
+				F8903A1B20B4011600C0865C /* 秘鲁.png */,
+				F8903A1C20B4011600C0865C /* 澳大利亚.png */,
+				F8903A1D20B4011600C0865C /* 尼日利亚.png */,
+				F8903A1E20B4011600C0865C /* 巴西.png */,
+				F8903A1F20B4011600C0865C /* 英格兰.png */,
+				F8903A2020B4011600C0865C /* 日本.png */,
+				F8903A2120B4011600C0865C /* 乌拉圭.png */,
+				F8903A2220B4011600C0865C /* 冰岛.png */,
+				F8903A2320B4011600C0865C /* 克罗地亚.png */,
+				F8903A2520B4011600C0865C /* 阿根廷.png */,
+				F8903A2620B4011600C0865C /* 埃及.png */,
+				F8903A5F20B4053C00C0865C /* 哥斯达黎加.jpeg */,
+				F8903A2720B4011600C0865C /* 比利时.png */,
+				F8903A2820B4011600C0865C /* 波兰.png */,
+				F8903A5D20B4053000C0865C /* 伊朗.jpeg */,
+				F8903A2920B4011600C0865C /* 沙特.png */,
+				F8903A2B20B4011600C0865C /* 韩国.png */,
+				F8903A2C20B4011600C0865C /* 摩纳哥.png */,
+				F8903A6120B4054900C0865C /* 塞内加尔.jpeg */,
+				F8903A2D20B4011600C0865C /* 墨西哥.png */,
+				F8903A2E20B4011600C0865C /* 瑞士.png */,
+				F8903A2F20B4011600C0865C /* 法国.png */,
+				F8903A3020B4011600C0865C /* 俄罗斯.png */,
+				F8903A3120B4011600C0865C /* 德国.png */,
+				F8903A3220B4011600C0865C /* 哥伦比亚.png */,
+				F8903A3320B4011600C0865C /* 西班牙.png */,
+				F8903A3420B4011600C0865C /* 巴拿马.png */,
+				F8903A3520B4011600C0865C /* 葡萄牙.png */,
+				F8903A3620B4011600C0865C /* 丹麦.png */,
+				F8903A3720B4011600C0865C /* 突尼斯.png */,
+				F8903A5B20B4051C00C0865C /* 伊朗.jpeg */,
+				F8903A3920B4011600C0865C /* 塞尔维亚.png */,
+				F8903A3A20B4011600C0865C /* 瑞典.png */,
+			);
+			path = "国旗";
+			sourceTree = "<group>";
+		};
 		F8C8271C20B2D960003A1C48 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +248,9 @@
 		F8C8272720B2D960003A1C48 /* MGCarouselCell */ = {
 			isa = PBXGroup;
 			children = (
+				F8903A1A20B4011600C0865C /* 国旗 */,
+				F8903A1720B3F50A00C0865C /* MGFlowLayout.h */,
+				F8903A1820B3F50A00C0865C /* MGFlowLayout.m */,
 				F8903A0D20B2EA2100C0865C /* MGCarouselView.h */,
 				F8903A0E20B2EA2100C0865C /* MGCarouselView.m */,
 				F8C8275A20B2DB37003A1C48 /* cell */,
@@ -291,11 +403,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8903A6020B4053C00C0865C /* 哥斯达黎加.jpeg in Resources */,
+				F8903A4220B4011700C0865C /* 冰岛.png in Resources */,
+				F8903A4120B4011700C0865C /* 乌拉圭.png in Resources */,
+				F8903A4B20B4011700C0865C /* 韩国.png in Resources */,
 				F8903A1620B3B14000C0865C /* vs.png in Resources */,
+				F8903A5620B4011700C0865C /* 丹麦.png in Resources */,
+				F8903A4820B4011700C0865C /* 波兰.png in Resources */,
+				F8903A4D20B4011700C0865C /* 墨西哥.png in Resources */,
 				F8C8273520B2D961003A1C48 /* LaunchScreen.storyboard in Resources */,
+				F8903A3C20B4011700C0865C /* 澳大利亚.png in Resources */,
+				F8903A3B20B4011700C0865C /* 秘鲁.png in Resources */,
+				F8903A4E20B4011700C0865C /* 瑞士.png in Resources */,
 				F8C8273220B2D961003A1C48 /* Assets.xcassets in Resources */,
+				F8903A5220B4011700C0865C /* 哥伦比亚.png in Resources */,
+				F8903A4620B4011700C0865C /* 埃及.png in Resources */,
+				F8903A4F20B4011700C0865C /* 法国.png in Resources */,
+				F8903A5320B4011700C0865C /* 西班牙.png in Resources */,
+				F8903A4020B4011700C0865C /* 日本.png in Resources */,
+				F8903A5420B4011700C0865C /* 巴拿马.png in Resources */,
+				F8903A4720B4011700C0865C /* 比利时.png in Resources */,
 				F8C8273020B2D960003A1C48 /* Main.storyboard in Resources */,
+				F8903A4520B4011700C0865C /* 阿根廷.png in Resources */,
+				F8903A4C20B4011700C0865C /* 摩纳哥.png in Resources */,
 				F8903A1420B3AA7C00C0865C /* data.json in Resources */,
+				F8903A5520B4011700C0865C /* 葡萄牙.png in Resources */,
+				F8903A5720B4011700C0865C /* 突尼斯.png in Resources */,
+				F8903A4920B4011700C0865C /* 沙特.png in Resources */,
+				F8903A3F20B4011700C0865C /* 英格兰.png in Resources */,
+				F8903A3E20B4011700C0865C /* 巴西.png in Resources */,
+				F8903A5920B4011700C0865C /* 塞尔维亚.png in Resources */,
+				F8903A5C20B4051C00C0865C /* 伊朗.jpeg in Resources */,
+				F8903A5E20B4053000C0865C /* 伊朗.jpeg in Resources */,
+				F8903A5020B4011700C0865C /* 俄罗斯.png in Resources */,
+				F8903A5120B4011700C0865C /* 德国.png in Resources */,
+				F8903A6220B4054900C0865C /* 塞内加尔.jpeg in Resources */,
+				F8903A3D20B4011700C0865C /* 尼日利亚.png in Resources */,
+				F8903A5A20B4011700C0865C /* 瑞典.png in Resources */,
+				F8903A4320B4011700C0865C /* 克罗地亚.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +490,7 @@
 				F8C8275D20B2DCCC003A1C48 /* MGCarouselCell.m in Sources */,
 				F8C8273820B2D961003A1C48 /* main.m in Sources */,
 				F8C8272A20B2D960003A1C48 /* AppDelegate.m in Sources */,
+				F8903A1920B3F50A00C0865C /* MGFlowLayout.m in Sources */,
 				F8903A0F20B2EA2100C0865C /* MGCarouselView.m in Sources */,
 				F8903A1220B312AF00C0865C /* MGCarouselModel.m in Sources */,
 			);
