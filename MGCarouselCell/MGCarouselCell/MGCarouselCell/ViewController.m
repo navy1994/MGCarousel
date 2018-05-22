@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "MGCarouselView.h"
+#import "MGCarouselModel.h"
 
 @interface ViewController ()
 
@@ -16,6 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor  = [UIColor blackColor];
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"data" ofType:@"json"];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    MGCarouselView *carouselView = [[MGCarouselView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 230)];
+    carouselView.items = [MGCarouselModel mj_objectArrayWithKeyValuesArray:dic[@"Items"]];
+    
+    [self.view addSubview:carouselView];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
