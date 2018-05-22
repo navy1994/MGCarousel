@@ -1,6 +1,6 @@
 # MGCarousel
 
-![](https://github.com/navy1234/MGCarousel/raw/master/gif/demo.gif)
+![](https://github.com/navy1234/MGCarousel/blob/master/gif/demo.gif)
 
 1.代码示例
 
