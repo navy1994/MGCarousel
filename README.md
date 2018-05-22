@@ -1,7 +1,6 @@
 # MGCarousel
 
 <div align=center><img width="300" height="605" src="https://github.com/navy1994/MGCarousel/blob/master/gif/demo.gif"/></div>
-![img](https://github.com/navy1994/MGCarousel/blob/master/gif/demo.gif)
 
 1.代码示例
 
