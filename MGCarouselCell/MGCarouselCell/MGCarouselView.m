@@ -101,14 +101,14 @@ static NSString *cellId = @"cellID";
 
 -(void)scrollToNextPage:(UIScrollView *)scrollView{
     if (scrollView.contentOffset.x > _offsetX) {
-        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
         if (i >= _items.count) {
             return;
         }
         NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
         [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }else{
-        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
         if (i < 1) {
             return;
         }
