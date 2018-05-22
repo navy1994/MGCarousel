@@ -1,8 +1,0 @@
-platform :ios, '7.0'
-target 'MGCarouselCell' 
-
-#use_frameworks!
-
-pod 'Masonry', '~> 1.0.2'
-pod 'SDWebImage', '~> 4.0.0'
-pod 'MJExtension', '~> 3.0.13'
