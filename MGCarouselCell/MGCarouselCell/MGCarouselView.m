@@ -9,10 +9,12 @@
 #import "MGCarouselView.h"
 #import "MGCarouselCell.h"
 #import "MGFlowLayout.h"
+#import "MGCarouselBottomView.h"
 
 static NSString *cellId = @"cellID";
 @interface MGCarouselView()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) MGCarouselBottomView *bottomView;
 @property (nonatomic, strong) MGFlowLayout *flowLayout;
 
 @property (nonatomic, weak) NSTimer *timer;
@@ -36,14 +38,17 @@ static NSString *cellId = @"cellID";
 }
 
 - (void)initCollectionView{
+    
+    _currentIndex = 0;
+    
     _flowLayout = [[MGFlowLayout alloc] init];
     _flowLayout.minimumLineSpacing = 0;
-    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-120, CGRectGetHeight(self.frame));
+    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-120, CGRectGetHeight(self.frame)-80);
     
     self.width = self.frame.size.width;
     self.edge = self.frame.size.width/2.0-((UICollectionViewFlowLayout*)_flowLayout).itemSize.width/2.0;
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_flowLayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-70) collectionViewLayout:_flowLayout];
     _collectionView.backgroundColor = [UIColor whiteColor];
     //_collectionView.pagingEnabled = YES;
     _collectionView.showsHorizontalScrollIndicator = NO;
@@ -56,10 +61,14 @@ static NSString *cellId = @"cellID";
     //    _collectionView.decelerationRate = 10;
     [self addSubview:_collectionView];
     
+    _bottomView = [[MGCarouselBottomView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_collectionView.frame), CGRectGetWidth(self.frame), 80)];
+    [self addSubview:_bottomView];
+    
 }
 
 - (void)setItems:(NSArray *)items{
     _items = items;
+    _bottomView.model = _items[_currentIndex];
     [self.collectionView reloadData];
 }
 
@@ -100,6 +109,7 @@ static NSString *cellId = @"cellID";
         
         
         [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+        _bottomView.model = _items[_currentIndex];
         if (self.selectItemComplete) {
             self.selectItemComplete(_currentIndex);
         }
@@ -113,6 +123,7 @@ static NSString *cellId = @"cellID";
     _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
     
     [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+    _bottomView.model = _items[_currentIndex];
     if (self.selectItemComplete) {
         self.selectItemComplete(_currentIndex);
     }

@@ -14,10 +14,7 @@
 @property (nonatomic, strong) UIImageView *bCountryImageView;
 @property (nonatomic, strong) UILabel *aCountryLB;
 @property (nonatomic, strong) UILabel *bCountryLB;
-@property (nonatomic, strong) UILabel *aPlayTitleLB;
-@property (nonatomic, strong) UILabel *bPlayTitleLB;
-@property (nonatomic, strong) UILabel *aPlayNumLB;
-@property (nonatomic, strong) UILabel *bPlayNumLB;
+
 @property (nonatomic, strong) UIImageView *gameLogo;
 @end
 
@@ -40,31 +37,8 @@
         _bCountryLB.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_bCountryLB];
         
-        _aPlayTitleLB = [[UILabel alloc]init];
-        _aPlayTitleLB.textColor = COLOR_WITH_HEX(0x333333);
-        _aPlayTitleLB.textAlignment = NSTextAlignmentCenter;
-        _aPlayTitleLB.font = [UIFont boldSystemFontOfSize:13];
-        [self addSubview:_aPlayTitleLB];
-        _bPlayTitleLB = [[UILabel alloc]init];
-        _bPlayTitleLB.textColor = COLOR_WITH_HEX(0x333333);
-        _bPlayTitleLB.textAlignment = NSTextAlignmentCenter;
-        _bPlayTitleLB.font = [UIFont boldSystemFontOfSize:13];
-        [self addSubview:_bPlayTitleLB];
-        
-        _aPlayNumLB = [[UILabel alloc]init];
-        _aPlayNumLB.textColor = COLOR_WITH_HEX(0x333333);;
-        _aPlayNumLB.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:_aPlayNumLB];
-        _bPlayNumLB = [[UILabel alloc]init];
-        _bPlayNumLB.textColor = COLOR_WITH_HEX(0x333333);;
-        _bPlayNumLB.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:_bPlayNumLB];
-        
         _gameLogo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"vs.png"]];
         [self addSubview:_gameLogo];
-        
-        _aPlayTitleLB.text = @"累计播放次数";
-        _bPlayTitleLB.text = @"累计播放次数";
         
         [self layoutUI];
     }
@@ -84,23 +58,7 @@
         _aCountryLB.text = _itemModel.aCountryName;
         _bCountryLB.text = _itemModel.bCountryName;
         
-        _aPlayNumLB.attributedText = [self stringToAttributedString:[self changeNumberFormat2:_itemModel.aPlayNum]];
-        _bPlayNumLB.attributedText = [self stringToAttributedString:[self changeNumberFormat2:_itemModel.bPlayNum]];
     }
-}
-
-- (NSMutableAttributedString*)stringToAttributedString:(NSString*)str{
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str attributes:@{NSForegroundColorAttributeName:COLOR_WITH_HEX(0xFB7A52), NSFontAttributeName:[UIFont systemFontOfSize:18]}];
-    [attStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"万" attributes:@{NSForegroundColorAttributeName:COLOR_WITH_HEX(0x333333), NSFontAttributeName:[UIFont systemFontOfSize:15]}]];
-    return attStr;
-}
-
--(NSString *)changeNumberFormat2:(CGFloat)num
-{
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setPositiveFormat:@"###,##0.0;"];
-    NSString *formattedNumberString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:num]];
-    return formattedNumberString;
 }
 
 - (void)layoutUI{
@@ -138,33 +96,6 @@
         make.height.mas_equalTo(self.aCountryLB.mas_height);
         make.centerX.mas_equalTo(self.bCountryImageView.mas_centerX);
     }];
-    
-    [_aPlayTitleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.aPlayNumLB.mas_top).offset(-5);
-        make.height.and.width.mas_equalTo(self.aPlayNumLB);
-        make.centerX.mas_equalTo(self.aPlayNumLB.mas_centerX);
-    }];
-
-    [_bPlayTitleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.bPlayNumLB.mas_top).offset(-5);
-        make.height.and.width.mas_equalTo(self.bPlayNumLB);
-        make.centerX.mas_equalTo(self.bPlayNumLB.mas_centerX);
-    }];
-    
-    [_aPlayNumLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.mas_bottom).offset(-30);
-        make.centerX.mas_equalTo(self.aCountryImageView.mas_centerX);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(80);
-    }];
-    
-    [_bPlayNumLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.mas_bottom).offset(-30);
-        make.centerX.mas_equalTo(self.bCountryImageView.mas_centerX);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(80);
-    }];
-    
     
 }
 @end

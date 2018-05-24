@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		537CC7D8E94656B302AF54F1 /* libPods-MGCarouselCell.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1375C4A076F186EA529E4B6B /* libPods-MGCarouselCell.a */; };
+		F831B3E620B65CCB00A766C1 /* MGCarouselBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F831B3E520B65CCB00A766C1 /* MGCarouselBottomView.m */; };
 		F8903A0F20B2EA2100C0865C /* MGCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8903A0E20B2EA2100C0865C /* MGCarouselView.m */; };
 		F8903A1220B312AF00C0865C /* MGCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8903A1120B312AF00C0865C /* MGCarouselModel.m */; };
 		F8903A1420B3AA7C00C0865C /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = F8903A1320B3AA7C00C0865C /* data.json */; };
@@ -78,6 +79,8 @@
 		1375C4A076F186EA529E4B6B /* libPods-MGCarouselCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MGCarouselCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F1919A37A77586C2BC7764 /* Pods-MGCarouselCell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCarouselCell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MGCarouselCell/Pods-MGCarouselCell.debug.xcconfig"; sourceTree = "<group>"; };
 		A16E5EDA71DC3ABDD1DEFC23 /* Pods-MGCarouselCell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MGCarouselCell.release.xcconfig"; path = "Pods/Target Support Files/Pods-MGCarouselCell/Pods-MGCarouselCell.release.xcconfig"; sourceTree = "<group>"; };
+		F831B3E420B65CCB00A766C1 /* MGCarouselBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MGCarouselBottomView.h; path = MGCarouselCell/cell/MGCarouselBottomView.h; sourceTree = SOURCE_ROOT; };
+		F831B3E520B65CCB00A766C1 /* MGCarouselBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MGCarouselBottomView.m; path = MGCarouselCell/cell/MGCarouselBottomView.m; sourceTree = SOURCE_ROOT; };
 		F8903A0C20B2E5CE00C0865C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F8903A0D20B2EA2100C0865C /* MGCarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGCarouselView.h; sourceTree = "<group>"; };
 		F8903A0E20B2EA2100C0865C /* MGCarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGCarouselView.m; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 		F8C8275A20B2DB37003A1C48 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				F831B3E420B65CCB00A766C1 /* MGCarouselBottomView.h */,
+				F831B3E520B65CCB00A766C1 /* MGCarouselBottomView.m */,
 				F8C8275B20B2DCCC003A1C48 /* MGCarouselCell.h */,
 				F8C8275C20B2DCCC003A1C48 /* MGCarouselCell.m */,
 				F8903A1020B312AF00C0865C /* MGCarouselModel.h */,
@@ -490,6 +495,7 @@
 				F8C8272D20B2D960003A1C48 /* ViewController.m in Sources */,
 				F8C8275D20B2DCCC003A1C48 /* MGCarouselCell.m in Sources */,
 				F8C8273820B2D961003A1C48 /* main.m in Sources */,
+				F831B3E620B65CCB00A766C1 /* MGCarouselBottomView.m in Sources */,
 				F8C8272A20B2D960003A1C48 /* AppDelegate.m in Sources */,
 				F8903A1920B3F50A00C0865C /* MGFlowLayout.m in Sources */,
 				F8903A0F20B2EA2100C0865C /* MGCarouselView.m in Sources */,
