@@ -40,6 +40,16 @@
         _gameLogo = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"vs.png"]];
         [self addSubview:_gameLogo];
         
+        _aCountryImageView.layer.shadowColor = COLOR_WITH_HEX(0x333333).CGColor;
+        _aCountryImageView.layer.shadowOffset = CGSizeMake(0, 0);
+        _aCountryImageView.layer.shadowOpacity = 0.5;
+        _aCountryImageView.layer.shadowRadius = 5.0;
+        
+        _bCountryImageView.layer.shadowColor = COLOR_WITH_HEX(0x333333).CGColor;
+        _bCountryImageView.layer.shadowOffset = CGSizeMake(0, 0);
+        _bCountryImageView.layer.shadowOpacity = 0.5;
+        _bCountryImageView.layer.shadowRadius = 5.0;
+        
         [self layoutUI];
     }
     return self;
