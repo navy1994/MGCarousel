@@ -18,6 +18,10 @@ static NSString *cellId = @"cellID";
 @property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, assign)  NSInteger currentIndex;
 
+@property(nonatomic, assign)  CGFloat width;
+@property(nonatomic, assign) CGFloat edge;
+
+
 @property (nonatomic, assign) CGFloat offsetX;
 @end
 
@@ -34,8 +38,10 @@ static NSString *cellId = @"cellID";
 - (void)initCollectionView{
     _flowLayout = [[MGFlowLayout alloc] init];
     _flowLayout.minimumLineSpacing = 0;
-    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-100, CGRectGetHeight(self.frame));
-
+    _flowLayout.itemSize = CGSizeMake(CGRectGetWidth(self.frame)-120, CGRectGetHeight(self.frame));
+    
+    self.width = self.frame.size.width;
+    self.edge = self.frame.size.width/2.0-((UICollectionViewFlowLayout*)_flowLayout).itemSize.width/2.0;
     
     _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_flowLayout];
     _collectionView.backgroundColor = [UIColor whiteColor];
@@ -46,9 +52,10 @@ static NSString *cellId = @"cellID";
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.scrollsToTop = NO;
-    _collectionView.decelerationRate = 10;
+    _collectionView.contentInset = UIEdgeInsetsMake(0, self.edge, 0, self.edge);
+    //    _collectionView.decelerationRate = 10;
     [self addSubview:_collectionView];
-
+    
 }
 
 - (void)setItems:(NSArray *)items{
@@ -83,46 +90,65 @@ static NSString *cellId = @"cellID";
     _offsetX = scrollView.contentOffset.x;
 }
 
-//滑动减速是触发的代理，当用户用力滑动或者清扫时触发
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
-    if (fabs(scrollView.contentOffset.x - _offsetX) > 10) {
-        [self scrollToNextPage:scrollView];
-    }
-}
 
-//用户拖拽是调用
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    if (fabs(scrollView.contentOffset.x - _offsetX) > 20) {
-        [self scrollToNextPage:scrollView];
-    }
-}
-
--(void)scrollToNextPage:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.x > _offsetX) {
-        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
-        if (i >= _items.count) {
-            return;
-        }
-        NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
-        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    }else{
-        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
-        if (i < 1) {
-            return;
-        }
-        NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
-        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    }
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSInteger index = indexPath.item%_items.count;
-    if (self.clickCellBlock) {
-        self.clickCellBlock(index);
+    
+    if (decelerate==NO) {
+        _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
+        
+        
+        [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+        if (self.selectItemComplete) {
+            self.selectItemComplete(_currentIndex);
+        }
+        
     }
 }
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+    _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
+    
+    [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+    if (self.selectItemComplete) {
+        self.selectItemComplete(_currentIndex);
+    }
+}
+
+
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+//    if (fabs(scrollView.contentOffset.x - _offsetX) > 20) {
+//        [self scrollToNextPage:scrollView];
+//    }
+//}
+//
+//-(void)scrollToNextPage:(UIScrollView *)scrollView{
+//    if (scrollView.contentOffset.x > _offsetX) {
+//        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
+//        if (i >= _items.count) {
+//            return;
+//        }
+//        NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
+//        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//    }else{
+//        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
+//        if (i < 1) {
+//            return;
+//        }
+//        NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
+//        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+//    }
+//}
+
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSInteger index = indexPath.item%_items.count;
+//    if (self.clickCellBlock) {
+//        self.clickCellBlock(index);
+//    }
+//}
 
 @end

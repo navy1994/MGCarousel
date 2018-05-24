@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^ClickCarouselViewBlock)(NSInteger index);
+//typedef void(^ClickCarouselViewBlock)(NSInteger index);
 
 @interface MGCarouselView : UIView
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, copy) ClickCarouselViewBlock clickCellBlock;
+
+
+@property(nonatomic, copy) void(^selectItemComplete)(NSInteger index );
 @end
