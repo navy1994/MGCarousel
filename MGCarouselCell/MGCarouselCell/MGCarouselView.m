@@ -93,73 +93,30 @@ static NSString *cellId = @"cellID";
     return _items.count;
 }
 
-//系统动画停止是刷新当前偏移量_offer是我定义的全局变量
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    _offsetX = scrollView.contentOffset.x;
-}
-
-
-
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    
-    if (decelerate==NO) {
-        _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
-        
-        
-        [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
-        _bottomView.model = _items[_currentIndex];
-        if (self.selectItemComplete) {
-            self.selectItemComplete(_currentIndex);
-        }
-        
-    }
+//    
+//    if (decelerate==NO) {
+//        _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
+//        [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+//        _bottomView.model = _items[_currentIndex];
+//        if (self.selectItemComplete) {
+//            self.selectItemComplete(_currentIndex);
+//        }
+//
+//    }
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
     _currentIndex=(int)((scrollView.contentOffset.x+self.width/2)/((self.width/2-self.edge)*2));
-    
-    [scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
+    //[scrollView setContentOffset:CGPointMake(_currentIndex*(self.width/2.0-self.edge)*2-self.edge, scrollView.contentOffset.y) animated:YES];
     _bottomView.model = _items[_currentIndex];
     if (self.selectItemComplete) {
         self.selectItemComplete(_currentIndex);
     }
 }
 
-
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-//    if (fabs(scrollView.contentOffset.x - _offsetX) > 20) {
-//        [self scrollToNextPage:scrollView];
-//    }
-//}
-//
-//-(void)scrollToNextPage:(UIScrollView *)scrollView{
-//    if (scrollView.contentOffset.x > _offsetX) {
-//        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
-//        if (i >= _items.count) {
-//            return;
-//        }
-//        NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
-//        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-//    }else{
-//        int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 50)+1;
-//        if (i < 1) {
-//            return;
-//        }
-//        NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
-//        [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-//    }
-//}
-
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSInteger index = indexPath.item%_items.count;
-//    if (self.clickCellBlock) {
-//        self.clickCellBlock(index);
-//    }
-//}
 
 @end

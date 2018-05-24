@@ -17,15 +17,32 @@
 - (void)prepareLayout
 {
     [super prepareLayout];
-    
+    self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     // 设置为水平滚动
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+}
+
+//返回滚动停止的点 自动对齐中心
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity{
     
-    //    // 设置内边距
-    //    CGFloat insetGap = (self.collectionView.frame.size.width - self.itemSize.width) * 0.5;
-    //    self.sectionInset = UIEdgeInsetsMake(0, insetGap, 0, insetGap);
-    //
+    CGFloat  offSetAdjustment = MAXFLOAT;
     
+    //预期停止水平中心点
+    CGFloat horizotalCenter = proposedContentOffset.x + self.collectionView.bounds.size.width / 2;
+    
+    //预期滚动停止时的屏幕区域
+    CGRect targetRect = CGRectMake(proposedContentOffset.x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
+    
+    //找出最接近中心点的item
+    NSArray *array = [super layoutAttributesForElementsInRect:targetRect];
+    for (UICollectionViewLayoutAttributes * attributes in array) {
+        CGFloat currentCenterX = attributes.center.x;
+        if (ABS(currentCenterX - horizotalCenter) < ABS(offSetAdjustment)) {
+            offSetAdjustment = currentCenterX - horizotalCenter;
+        }
+    }
+    
+    return CGPointMake(proposedContentOffset.x + offSetAdjustment, proposedContentOffset.y);
 }
 
 /**
